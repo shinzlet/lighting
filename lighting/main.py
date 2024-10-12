@@ -2,6 +2,7 @@ import logging
 from logging import Logger
 from typing import Optional
 from pathlib import Path
+from datetime import date, timedelta, datetime
 
 import click
 import yaml
@@ -10,12 +11,13 @@ from astral.location import LocationInfo
 from .solar_times import SolarTimes
 from .solar_timestamp import SolarTimestamp
 from .config import Config
+from .interpolation import get_interpolation_window
 
 BOLD_SEQ = "\033[1m"
 RESET_SEQ = "\033[0m"
 LOG = logging.getLogger(__name__)
 
-@click.group(invoke_without_command=True)
+@click.group()
 @click.pass_context
 @click.option("--verbose", default=False, type=bool)
 @click.option(
@@ -43,15 +45,55 @@ def main(ctx: click.Context, verbose: bool, config: Path):
         config.location.lat,
         config.location.lon)
 
-    if ctx.invoked_subcommand is None:
-        pass
+    # Make config available to subcommands
+    ctx.ensure_object(dict)
+    ctx.obj['config'] = config
 
-@click.command()
-@click.argument("solar-timestamp", type=str, required=False)
-def solartime(solar_timestamp: Optional[str]):
-    if solar_timestamp is None:
-        print(SolarTimestamp.from_datetime())
-    else:
-        print(f"{solar_timestamp} will occur at {SolarTimestamp.from_str(solar_timestamp).normalize()}.")
+@main.group()
+def solartime():
+    """Manage solar times."""
+    pass
 
-main.add_command(solartime, "solartime")
+@solartime.command()
+def now():
+    """Display the current solar time as a SolarTimestamp."""
+    current_solar_time = SolarTimestamp.from_datetime()
+    click.echo(f"Current solar time: {str(current_solar_time)}")
+
+@solartime.command()
+@click.argument("solar_timestamp", type=str)
+def convert(solar_timestamp: str):
+    """Convert a solar timestamp string into a datetime."""
+    solar_ts = SolarTimestamp.from_str(solar_timestamp)
+    normalized_time = solar_ts.normalize()
+    click.echo(f"{solar_timestamp} corresponds to datetime: {normalized_time}")
+
+@solartime.command()
+def list():
+    """List solar segment times for yesterday, today, and tomorrow."""
+    days = {
+        "Yesterday": date.today() - timedelta(days=1),
+        "Today": date.today(),
+        "Tomorrow": date.today() + timedelta(days=1),
+    }
+
+    for day_name, day in days.items():
+        solar_times = SolarTimes.from_cache(day)
+        click.echo(f"\n{BOLD_SEQ}{day.isoformat()} ({day_name}){RESET_SEQ}")
+
+        # Justifying output for segment names and times
+        max_segment_length = max(len(segment) for segment in SolarTimes.SEGMENT_NAMES)
+        for segment_name in SolarTimes.SEGMENT_NAMES:
+            segment_time = solar_times.times.get(segment_name)
+            if segment_time:
+                click.echo(f"  {segment_name.ljust(max_segment_length)} : {segment_time}")
+
+@main.command
+@click.pass_context
+def test(ctx):
+    routine = ctx.obj['config'].routines[0]
+    for i in get_interpolation_window(routine, datetime.now().replace(tzinfo=SolarTimes.CITY.tzinfo)):
+        print(i)
+
+if __name__ == "__main__":
+    main()

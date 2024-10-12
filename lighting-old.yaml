@@ -1,0 +1,40 @@
+location:
+  lat: 37.7614418
+  lon: -122.3940788
+default: # If a routine only specifies the intensity at a time, this temp and light hue are used
+  temp: 2800
+  hue: 200
+zones:
+  - name: Living area
+    device_sets:
+      - "Ceiling Lamp"
+    devices:
+      - "Light 5"
+    ensure_light_between:
+      # The lighting program usually turns the lights off during times of natural light - for example, at high noon,
+      # you don't want your living room lights to be on. However, if it is very dark inside (i.e. the middle of winter,
+      # a solar eclipse, a very cloudy day), it may not be bright enough inside with all the lights off.
+      # If it is exceptionally dark during the start and end time ("hh:mm" in 24 hour time), then the lights will be
+      # set to `max(brightness_calculated_by_routine, intensity)`. This should be late enough in the morning that you
+      # are certain you will be awake, and early enough in the evening that you will likely not be in bed. i.e. start
+      # of work to 1 hour before bedtime
+      start: "9:30"
+      end: "21:00"
+      intensity: 20
+    routine:
+      # time: 0.x == between midnight and dawn, 1.x = between dawn and sunrise, 2.x = between sunrise and noon, 3.x = between noon and sunset, 4.x = between sunset and dusk, 5.x = between dusk and midnight
+      # x == interpolant that rises as time advances 
+      0.2:
+        temp: 2202
+        # hue: 200 # uses hue if supported. can also leave as none. if temp is given, that will be used, if not, then default
+        # saturation: 1.0 # Saturation from 0.0 to 1.0
+        # temp: 2800 # Can be none, will use default
+        intensity: 0 # 0-100 : 0 == off, 100 == max on
+      1.4:
+        intensity: 0
+      5.011:
+        intensity: 0 # fade to 100% in the last 60% of dusk as the sun rises
+        temp: 4000
+      5.015:
+        intensity: 100 # Turn off as the sun rises high
+        temp: 2202

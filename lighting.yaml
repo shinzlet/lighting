@@ -1,0 +1,26 @@
+location:
+  name: San Francisco
+  region: America
+  timezone: America/Los_Angeles
+  lat: 37.7614418
+  lon: -122.3940788
+zones:
+  - name: "Living room"
+    routine: "Main"
+    device_sets:
+      - "Ceiling Lamp"
+    devices:
+      - "Light 5"
+routines:
+  - name: "Main"
+    data:
+      "dawn":
+        temp: 2202
+        intensity: 0
+        hue: 100
+        saturation: 10
+      "dusk+10%":
+        temp: 2202
+        intensity: 0
+        hue: 100
+        saturation: 10

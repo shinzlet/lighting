@@ -1,0 +1,664 @@
+- !!python/object:dirigera.devices.light.Light
+  __dict__:
+    attributes: !!python/object:dirigera.devices.light.LightAttributes
+      __dict__:
+        color_hue: null
+        color_saturation: null
+        color_temperature: 2202
+        color_temperature_max: 2202
+        color_temperature_min: 4000
+        custom_name: Top Lamp
+        firmware_version: 1.1.20
+        hardware_version: '1'
+        is_on: false
+        light_level: 38
+        manufacturer: IKEA of Sweden
+        model: TRADFRIbulbE12WScandleopal450lm
+        ota_policy: autoUpdate
+        ota_progress: 0
+        ota_schedule_end: !!python/object/apply:datetime.time
+        - !!binary |
+          AAAAAAAA
+        ota_schedule_start: !!python/object/apply:datetime.time
+        - !!binary |
+          AAAAAAAA
+        ota_state: readyToCheck
+        ota_status: upToDate
+        product_code: LED1949C5NA
+        serial_number: B4E3F9FFFEF164D1
+        startup_on_off: &id001 !!python/object/apply:dirigera.devices.device.StartupEnum
+        - startOn
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        color_temperature: null
+        color_temperature_max: null
+        color_temperature_min: null
+        custom_name: null
+        firmware_version: null
+        hardware_version: null
+        is_on: null
+        light_level: null
+        manufacturer: null
+        model: null
+        ota_policy: null
+        ota_progress: null
+        ota_schedule_end: null
+        ota_schedule_start: null
+        ota_state: null
+        ota_status: null
+        product_code: null
+        serial_number: null
+        startup_on_off: null
+      __pydantic_private__: null
+    capabilities: !!python/object:dirigera.devices.device.Capabilities
+      __dict__:
+        can_receive:
+        - customName
+        - isOn
+        - lightLevel
+        - colorTemperature
+        can_send: []
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        can_receive: null
+        can_send: null
+      __pydantic_private__: null
+    created_at: 2024-09-20 03:28:30+00:00
+    device_set: []
+    device_type: light
+    dirigera_client: &id002 !!python/object:dirigera.hub.hub.Hub
+      api_base_url: https://192.168.86.27:8443/v1
+      token: eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjJmZjRiMmE5ZDZhNTQxMGQ4ZDdlMWI3MjQzNWMwNzE0ZGY1YmRhMDNlNGRlOGRmZTVlYjMxYTJlOTQzYmM2MGMifQ.eyJpc3MiOiI2N2ZmNTRiZC1jN2M5LTRlZGMtYjgxNy0wOGMzM2ViMmMwMjkiLCJ0eXBlIjoiYWNjZXNzIiwiYXVkIjoiaG9tZXNtYXJ0LmxvY2FsIiwic3ViIjoiOWZkN2EzM2EtOTEzYy00NjFlLWIwZjktYjNlZjMxNTY0NTViIiwiaWF0IjoxNzI2OTQ5MDU2LCJleHAiOjIwNDI1MjUwNTZ9._TLDVYNpEmOLuXnrja-PrIUgQJoj13B9JnG9yHiZcMf5k-yh7jowYtnMh_5cl8K6ll6IwwAzSng7o5QRRyNSFg
+      websocket_base_url: wss://192.168.86.27:8443/v1
+      wsapp: null
+    id: 15d91dff-2c35-4102-9276-b35b07bd062b_1
+    is_hidden: false
+    is_reachable: true
+    last_seen: 2024-09-23 06:11:29+00:00
+    relation_id: null
+    remote_links: []
+    room: !!python/object:dirigera.devices.device.Room
+      __dict__:
+        color: ikea_green_no_65
+        icon: rooms_sofa
+        id: ea0ee7cc-2d1e-4810-850c-84edd8882eff
+        name: Living room
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        color: null
+        icon: null
+        id: null
+        name: null
+      __pydantic_private__: null
+    type: light
+  __pydantic_extra__: null
+  __pydantic_fields_set__: !!set
+    attributes: null
+    capabilities: null
+    created_at: null
+    device_set: null
+    device_type: null
+    dirigera_client: null
+    id: null
+    is_hidden: null
+    is_reachable: null
+    last_seen: null
+    remote_links: null
+    room: null
+    type: null
+  __pydantic_private__: null
+- !!python/object:dirigera.devices.light.Light
+  __dict__:
+    attributes: !!python/object:dirigera.devices.light.LightAttributes
+      __dict__:
+        color_hue: 11.932085841200092
+        color_saturation: 0.733407725406173
+        color_temperature: 2202
+        color_temperature_max: 2202
+        color_temperature_min: 4000
+        custom_name: Light 2
+        firmware_version: 1.0.021
+        hardware_version: '1'
+        is_on: false
+        light_level: 24
+        manufacturer: IKEA of Sweden
+        model: TRADFRI bulb E26 CWS 800lm
+        ota_policy: autoUpdate
+        ota_progress: 0
+        ota_schedule_end: !!python/object/apply:datetime.time
+        - !!binary |
+          AAAAAAAA
+        ota_schedule_start: !!python/object/apply:datetime.time
+        - !!binary |
+          AAAAAAAA
+        ota_state: readyToCheck
+        ota_status: upToDate
+        product_code: LED1924G9NA
+        serial_number: 6C5CB1FFFE9BB875
+        startup_on_off: *id001
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        color_hue: null
+        color_saturation: null
+        color_temperature: null
+        color_temperature_max: null
+        color_temperature_min: null
+        custom_name: null
+        firmware_version: null
+        hardware_version: null
+        is_on: null
+        light_level: null
+        manufacturer: null
+        model: null
+        ota_policy: null
+        ota_progress: null
+        ota_schedule_end: null
+        ota_schedule_start: null
+        ota_state: null
+        ota_status: null
+        product_code: null
+        serial_number: null
+        startup_on_off: null
+      __pydantic_private__: null
+    capabilities: !!python/object:dirigera.devices.device.Capabilities
+      __dict__:
+        can_receive:
+        - customName
+        - isOn
+        - lightLevel
+        - colorTemperature
+        - colorHue
+        - colorSaturation
+        can_send: []
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        can_receive: null
+        can_send: null
+      __pydantic_private__: null
+    created_at: 2024-09-20 03:09:45+00:00
+    device_set:
+    - icon: lighting_chandelier
+      id: 8b64c6bf-63b2-4edf-842d-ff18ca2f3164
+      name: Ceiling Lamp
+    device_type: light
+    dirigera_client: *id002
+    id: 36643c4f-760a-4a9d-aff8-a1b071c2cc2d_1
+    is_hidden: false
+    is_reachable: true
+    last_seen: 2024-09-23 06:17:41+00:00
+    relation_id: null
+    remote_links: []
+    room: !!python/object:dirigera.devices.device.Room
+      __dict__:
+        color: ikea_yellow_no_24
+        icon: rooms_bed
+        id: 8eae6dc4-7600-4810-941a-04dc502fb464
+        name: Bedroom
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        color: null
+        icon: null
+        id: null
+        name: null
+      __pydantic_private__: null
+    type: light
+  __pydantic_extra__: null
+  __pydantic_fields_set__: !!set
+    attributes: null
+    capabilities: null
+    created_at: null
+    device_set: null
+    device_type: null
+    dirigera_client: null
+    id: null
+    is_hidden: null
+    is_reachable: null
+    last_seen: null
+    remote_links: null
+    room: null
+    type: null
+  __pydantic_private__: null
+- !!python/object:dirigera.devices.light.Light
+  __dict__:
+    attributes: !!python/object:dirigera.devices.light.LightAttributes
+      __dict__:
+        color_hue: 11.932085841200092
+        color_saturation: 0.733407725406173
+        color_temperature: 2202
+        color_temperature_max: 2202
+        color_temperature_min: 4000
+        custom_name: Light 3
+        firmware_version: 1.0.021
+        hardware_version: '1'
+        is_on: false
+        light_level: 24
+        manufacturer: IKEA of Sweden
+        model: TRADFRI bulb E26 CWS 800lm
+        ota_policy: autoUpdate
+        ota_progress: 0
+        ota_schedule_end: !!python/object/apply:datetime.time
+        - !!binary |
+          AAAAAAAA
+        ota_schedule_start: !!python/object/apply:datetime.time
+        - !!binary |
+          AAAAAAAA
+        ota_state: readyToCheck
+        ota_status: upToDate
+        product_code: LED1924G9NA
+        serial_number: 881A14FFFE30861C
+        startup_on_off: *id001
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        color_hue: null
+        color_saturation: null
+        color_temperature: null
+        color_temperature_max: null
+        color_temperature_min: null
+        custom_name: null
+        firmware_version: null
+        hardware_version: null
+        is_on: null
+        light_level: null
+        manufacturer: null
+        model: null
+        ota_policy: null
+        ota_progress: null
+        ota_schedule_end: null
+        ota_schedule_start: null
+        ota_state: null
+        ota_status: null
+        product_code: null
+        serial_number: null
+        startup_on_off: null
+      __pydantic_private__: null
+    capabilities: !!python/object:dirigera.devices.device.Capabilities
+      __dict__:
+        can_receive:
+        - customName
+        - isOn
+        - lightLevel
+        - colorTemperature
+        - colorHue
+        - colorSaturation
+        can_send: []
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        can_receive: null
+        can_send: null
+      __pydantic_private__: null
+    created_at: 2024-09-20 03:10:05+00:00
+    device_set:
+    - icon: lighting_chandelier
+      id: 8b64c6bf-63b2-4edf-842d-ff18ca2f3164
+      name: Ceiling Lamp
+    device_type: light
+    dirigera_client: *id002
+    id: aeba546a-c864-41ac-902c-68c3ea017a6f_1
+    is_hidden: false
+    is_reachable: true
+    last_seen: 2024-09-23 06:17:41+00:00
+    relation_id: null
+    remote_links: []
+    room: !!python/object:dirigera.devices.device.Room
+      __dict__:
+        color: ikea_yellow_no_24
+        icon: rooms_bed
+        id: 8eae6dc4-7600-4810-941a-04dc502fb464
+        name: Bedroom
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        color: null
+        icon: null
+        id: null
+        name: null
+      __pydantic_private__: null
+    type: light
+  __pydantic_extra__: null
+  __pydantic_fields_set__: !!set
+    attributes: null
+    capabilities: null
+    created_at: null
+    device_set: null
+    device_type: null
+    dirigera_client: null
+    id: null
+    is_hidden: null
+    is_reachable: null
+    last_seen: null
+    remote_links: null
+    room: null
+    type: null
+  __pydantic_private__: null
+- !!python/object:dirigera.devices.light.Light
+  __dict__:
+    attributes: !!python/object:dirigera.devices.light.LightAttributes
+      __dict__:
+        color_hue: 28.9215087890625
+        color_saturation: 1.0
+        color_temperature: 2202
+        color_temperature_max: 2202
+        color_temperature_min: 4000
+        custom_name: Light 4
+        firmware_version: 1.0.021
+        hardware_version: '1'
+        is_on: true
+        light_level: 50
+        manufacturer: IKEA of Sweden
+        model: TRADFRI bulb E26 CWS 800lm
+        ota_policy: autoUpdate
+        ota_progress: 0
+        ota_schedule_end: !!python/object/apply:datetime.time
+        - !!binary |
+          AAAAAAAA
+        ota_schedule_start: !!python/object/apply:datetime.time
+        - !!binary |
+          AAAAAAAA
+        ota_state: readyToCheck
+        ota_status: upToDate
+        product_code: LED1924G9NA
+        serial_number: 881A14FFFE3C4B5B
+        startup_on_off: *id001
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        color_hue: null
+        color_saturation: null
+        color_temperature: null
+        color_temperature_max: null
+        color_temperature_min: null
+        custom_name: null
+        firmware_version: null
+        hardware_version: null
+        is_on: null
+        light_level: null
+        manufacturer: null
+        model: null
+        ota_policy: null
+        ota_progress: null
+        ota_schedule_end: null
+        ota_schedule_start: null
+        ota_state: null
+        ota_status: null
+        product_code: null
+        serial_number: null
+        startup_on_off: null
+      __pydantic_private__: null
+    capabilities: !!python/object:dirigera.devices.device.Capabilities
+      __dict__:
+        can_receive:
+        - customName
+        - isOn
+        - lightLevel
+        - colorTemperature
+        - colorHue
+        - colorSaturation
+        can_send: []
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        can_receive: null
+        can_send: null
+      __pydantic_private__: null
+    created_at: 2024-09-20 03:30:16+00:00
+    device_set:
+    - icon: lighting_wall_lamp
+      id: bb2cb7ac-f501-4f20-b4ea-56681b0cd15b
+      name: Vanity
+    device_type: light
+    dirigera_client: *id002
+    id: a8235c17-bc90-4b2a-82f6-6440eec6adb0_1
+    is_hidden: false
+    is_reachable: false
+    last_seen: 2024-09-23 18:19:02+00:00
+    relation_id: null
+    remote_links: []
+    room: !!python/object:dirigera.devices.device.Room
+      __dict__:
+        color: ikea_yellow_no_31
+        icon: rooms_bathtub
+        id: 3ededb0c-eab9-4bfa-b309-bc54aa4cafd1
+        name: Bathroom
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        color: null
+        icon: null
+        id: null
+        name: null
+      __pydantic_private__: null
+    type: light
+  __pydantic_extra__: null
+  __pydantic_fields_set__: !!set
+    attributes: null
+    capabilities: null
+    created_at: null
+    device_set: null
+    device_type: null
+    dirigera_client: null
+    id: null
+    is_hidden: null
+    is_reachable: null
+    last_seen: null
+    remote_links: null
+    room: null
+    type: null
+  __pydantic_private__: null
+- !!python/object:dirigera.devices.light.Light
+  __dict__:
+    attributes: !!python/object:dirigera.devices.light.LightAttributes
+      __dict__:
+        color_hue: 28.9215087890625
+        color_saturation: 1.0
+        color_temperature: 2202
+        color_temperature_max: 2202
+        color_temperature_min: 4000
+        custom_name: Light 5
+        firmware_version: 1.0.021
+        hardware_version: '1'
+        is_on: true
+        light_level: 50
+        manufacturer: IKEA of Sweden
+        model: TRADFRI bulb E26 CWS 800lm
+        ota_policy: autoUpdate
+        ota_progress: 0
+        ota_schedule_end: !!python/object/apply:datetime.time
+        - !!binary |
+          AAAAAAAA
+        ota_schedule_start: !!python/object/apply:datetime.time
+        - !!binary |
+          AAAAAAAA
+        ota_state: readyToCheck
+        ota_status: upToDate
+        product_code: LED1924G9NA
+        serial_number: 881A14FFFE308689
+        startup_on_off: *id001
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        color_hue: null
+        color_saturation: null
+        color_temperature: null
+        color_temperature_max: null
+        color_temperature_min: null
+        custom_name: null
+        firmware_version: null
+        hardware_version: null
+        is_on: null
+        light_level: null
+        manufacturer: null
+        model: null
+        ota_policy: null
+        ota_progress: null
+        ota_schedule_end: null
+        ota_schedule_start: null
+        ota_state: null
+        ota_status: null
+        product_code: null
+        serial_number: null
+        startup_on_off: null
+      __pydantic_private__: null
+    capabilities: !!python/object:dirigera.devices.device.Capabilities
+      __dict__:
+        can_receive:
+        - customName
+        - isOn
+        - lightLevel
+        - colorTemperature
+        - colorHue
+        - colorSaturation
+        can_send: []
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        can_receive: null
+        can_send: null
+      __pydantic_private__: null
+    created_at: 2024-09-20 03:30:16+00:00
+    device_set:
+    - icon: lighting_wall_lamp
+      id: bb2cb7ac-f501-4f20-b4ea-56681b0cd15b
+      name: Vanity
+    device_type: light
+    dirigera_client: *id002
+    id: faf14e0b-350a-4d71-a6f2-128a29432e2f_1
+    is_hidden: false
+    is_reachable: false
+    last_seen: 2024-09-23 18:19:14+00:00
+    relation_id: null
+    remote_links: []
+    room: !!python/object:dirigera.devices.device.Room
+      __dict__:
+        color: ikea_yellow_no_31
+        icon: rooms_bathtub
+        id: 3ededb0c-eab9-4bfa-b309-bc54aa4cafd1
+        name: Bathroom
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        color: null
+        icon: null
+        id: null
+        name: null
+      __pydantic_private__: null
+    type: light
+  __pydantic_extra__: null
+  __pydantic_fields_set__: !!set
+    attributes: null
+    capabilities: null
+    created_at: null
+    device_set: null
+    device_type: null
+    dirigera_client: null
+    id: null
+    is_hidden: null
+    is_reachable: null
+    last_seen: null
+    remote_links: null
+    room: null
+    type: null
+  __pydantic_private__: null
+- !!python/object:dirigera.devices.light.Light
+  __dict__:
+    attributes: !!python/object:dirigera.devices.light.LightAttributes
+      __dict__:
+        color_hue: 28.9215087890625
+        color_saturation: 1.0
+        color_temperature: 2202
+        color_temperature_max: 2202
+        color_temperature_min: 4000
+        custom_name: Light 6
+        firmware_version: 1.0.021
+        hardware_version: '1'
+        is_on: true
+        light_level: 50
+        manufacturer: IKEA of Sweden
+        model: TRADFRI bulb E26 CWS 800lm
+        ota_policy: autoUpdate
+        ota_progress: 0
+        ota_schedule_end: !!python/object/apply:datetime.time
+        - !!binary |
+          AAAAAAAA
+        ota_schedule_start: !!python/object/apply:datetime.time
+        - !!binary |
+          AAAAAAAA
+        ota_state: readyToCheck
+        ota_status: upToDate
+        product_code: LED1924G9NA
+        serial_number: 881A14FFFEACB678
+        startup_on_off: *id001
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        color_hue: null
+        color_saturation: null
+        color_temperature: null
+        color_temperature_max: null
+        color_temperature_min: null
+        custom_name: null
+        firmware_version: null
+        hardware_version: null
+        is_on: null
+        light_level: null
+        manufacturer: null
+        model: null
+        ota_policy: null
+        ota_progress: null
+        ota_schedule_end: null
+        ota_schedule_start: null
+        ota_state: null
+        ota_status: null
+        product_code: null
+        serial_number: null
+        startup_on_off: null
+      __pydantic_private__: null
+    capabilities: !!python/object:dirigera.devices.device.Capabilities
+      __dict__:
+        can_receive:
+        - customName
+        - isOn
+        - lightLevel
+        - colorTemperature
+        - colorHue
+        - colorSaturation
+        can_send: []
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        can_receive: null
+        can_send: null
+      __pydantic_private__: null
+    created_at: 2024-09-20 03:30:19+00:00
+    device_set:
+    - icon: lighting_wall_lamp
+      id: bb2cb7ac-f501-4f20-b4ea-56681b0cd15b
+      name: Vanity
+    device_type: light
+    dirigera_client: *id002
+    id: 920f7303-6077-4952-84cc-1c7f393f5204_1
+    is_hidden: false
+    is_reachable: false
+    last_seen: 2024-09-23 18:19:08+00:00
+    relation_id: null
+    remote_links: []
+    room: !!python/object:dirigera.devices.device.Room
+      __dict__:
+        color: ikea_yellow_no_31
+        icon: rooms_bathtub
+        id: 3ededb0c-eab9-4bfa-b309-bc54aa4cafd1
+        name: Bathroom
+      __pydantic_extra__: null
+      __pydantic_fields_set__: !!set
+        color: null
+        icon: null
+        id: null
+        name: null
+      __pydantic_private__: null
+    type: light
+  __pydantic_extra__: null
+  __pydantic_fields_set__: !!set
+    attributes: null
+    capabilities: null
+    created_at: null
+    device_set: null
+    device_type: null
+    dirigera_client: null
+    id: null
+    is_hidden: null
+    is_reachable: null
+    last_seen: null
+    remote_links: null
+    room: null
+    type: null
+  __pydantic_private__: null

@@ -2,3 +2,5 @@ dirigera_token
 weather_api_key
 *.egg-info
 build
+*.pyc
+__pycache__

@@ -1,3 +1,6 @@
+dirigera:
+  hub_ip: 192.168.86.27
+  token_file: dirigera_token
 location:
   name: San Francisco
   region: America
@@ -6,21 +9,80 @@ location:
   lon: -122.3940788
 zones:
   - name: "Living room"
-    routine: "Main"
+    routine: "Rainbow"
+    devices: []
     device_sets:
       - "Ceiling Lamp"
-    devices:
-      - "Light 5"
 routines:
   - name: "Main"
     data:
-      "dawn":
+      "dawn+80%":
         temp: 2202
         intensity: 0
-        hue: 100
-        saturation: 10
-      "dusk+10%":
+      "sunrise+20%":
+        temp: 3000
+        intensity: 100
+      "noon":
+        temp: 3700
+        intensity: 0
+      "noon+80%":
+        temp: 3700
+        intensity: 0
+      "sunset":
+        temp: 3700
+        intensity: 50
+      "dusk":
+        temp: 2202
+        intensity: 20
+      "dusk + 30%":
+        temp: 2202
+        intensity: 10
+        hue: 0
+        saturation: 1
+      "dusk + 80%":
         temp: 2202
         intensity: 0
-        hue: 100
-        saturation: 10
+        hue: 0
+        saturation: 0
+  - name: "Rainbow"
+    data:
+      "dawn+80%":
+        temp: 2202
+        intensity: 0
+        hue: 0  # Starting hue at dawn
+        saturation: 1
+      "sunrise+20%":
+        temp: 3000
+        intensity: 100
+        hue: 60  # Hue advancing during sunrise
+        saturation: 1
+      "noon":
+        temp: 3700
+        intensity: 100
+        hue: 180  # Midday hue (greenish)
+        saturation: 1
+      "noon+80%":
+        temp: 3700
+        intensity: 100
+        hue: 240  # Early afternoon hue (blue)
+        saturation: 1
+      "sunset":
+        temp: 3700
+        intensity: 50
+        hue: 300  # Evening hue (purple)
+        saturation: 1
+      "dusk":
+        temp: 2202
+        intensity: 20
+        hue: 360  # Completing the cycle at dusk
+        saturation: 1
+      "dusk + 30%":
+        temp: 2202
+        intensity: 10
+        hue: 0  # Cycle restarts after dusk
+        saturation: 1
+      "dusk + 80%":
+        temp: 2202
+        intensity: 0
+        hue: 0
+        saturation: 0

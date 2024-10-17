@@ -46,42 +46,42 @@ routines:
         saturation: 0
   - name: "Rainbow"
     data:
-      "dawn+80%":
+      "00:00":
         temp: 2202
         intensity: 0
         hue: 0  # Starting hue at dawn
         saturation: 1
-      "sunrise+20%":
+      "01:00":
         temp: 3000
         intensity: 100
         hue: 60  # Hue advancing during sunrise
         saturation: 1
-      "noon":
+      "02:00":
         temp: 3700
         intensity: 100
         hue: 180  # Midday hue (greenish)
         saturation: 1
-      "noon+80%":
+      "03:00":
         temp: 3700
         intensity: 100
         hue: 240  # Early afternoon hue (blue)
         saturation: 1
-      "sunset":
+      "04:00":
         temp: 3700
         intensity: 50
         hue: 300  # Evening hue (purple)
         saturation: 1
-      "dusk":
+      "06:00":
         temp: 2202
         intensity: 20
         hue: 360  # Completing the cycle at dusk
         saturation: 1
-      "dusk + 30%":
+      "dawn":
         temp: 2202
         intensity: 10
         hue: 0  # Cycle restarts after dusk
         saturation: 1
-      "dusk + 80%":
+      "10:00":
         temp: 2202
         intensity: 0
         hue: 0

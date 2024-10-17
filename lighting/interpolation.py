@@ -1,9 +1,10 @@
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, time
 from .config import Routine, RoutineData
 from typing import Tuple, Optional, ClassVar
 from logging import Logger
 import logging
 from dataclasses import dataclass
+import re
 
 from .solar_timestamp import SolarTimestamp
 from .solar_times import SolarTimes
@@ -105,15 +106,37 @@ class RoutineCache:
         return ret
 
 def get_normalized_routine(routine: Routine, day: date, log: Optional[Logger] = LOG) -> NormalizedRoutine:
-    # Normalize each timestamp in today's routine and sort them
+    # Normalize each timestamp in today's routine and sort them. Note that we do a fun thing to support hardcoded
+    # times here as well:
+    # We assume the keys are in sorted order, but we DO check. in the case that we find keys that are not sorted,
+    # this is assumed to be the case where a fixed timestamp and a solar timestamp happen to cross over - for
+    # example, at certain times of the year, "20:00" > "dusk", but at other times, "dusk" > "20:00".
+    # Imagine this schedule:
+    # 12:00: lights on
+    # 20:00: lights on
+    # dusk: lights off
+    # but today, dusk happens at 19:00.
+    # Instead of saying that this is a mistake, or picking the chronologically later time (i.e. deleting the dusk keyframe),
+    # we appeal to the limit dusk approaching 20:00 from 21:00 - as it approaches 20:00, the time period where the lighting
+    # is defined by the 20:00 keyframe gets shorter and shorter, eventually being deleted as that later solar timestamp
+    # oversteps it. So we resolve the time of dusk, then clip 20:00 to be just an instant before - yielding this normalized
+    # routine:
+    # 12:00: lights on
+    # 18:59:30: lights on
+    # 19:00: lights off
+    # We only allow user input to the minute but we do this fudging at the 30 second mark, so this can never
+    # produce an invalid state
     timestamps: NormalizedRoutine = []
 
-    for segment_name in routine.data.keys():
-        solar_ts = SolarTimestamp.from_str(segment_name, day, log=log)
-        normalized_time = solar_ts.normalize(log=log)
+    for i, segment_name in enumerate(routine.data.keys()):
+        # We accept 24hr or solar time so we use normalize_any
+        normalized_time = SolarTimestamp.normalize_any(segment_name, day, log=log)
+        
+        # Correct the time ordering if there's a glitch
+        if i > 0 and normalized_time < timestamps[-1][-1]:
+            timestamps[-1] = (timestamps[-1][0], normalized_time - timedelta(minutes=0.5))
+        
         timestamps.append((segment_name, normalized_time))
-
-    timestamps.sort(key=lambda x: x[1])
 
     return timestamps
 

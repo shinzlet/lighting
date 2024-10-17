@@ -1,5 +1,5 @@
 from typing import ClassVar, Optional
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, time
 import logging
 from logging import Logger
 import re
@@ -24,6 +24,9 @@ class SolarTimestamp:
         $                    # End of the line
         """, re.VERBOSE)
 
+    # Match a 24 hour time from 00:00 to 23:59
+    TIME_REGEX = re.compile(r'^([01]\d|2[0-3]):([0-5]\d)$')
+
     def __init__(self, day: date, segment: str, offset: float):
         self.day = day
         self.segment = segment
@@ -43,6 +46,20 @@ class SolarTimestamp:
             offset = int(match.group(2))
 
         return SolarTimestamp(day, segment=match.group(1), offset=offset)
+    
+    @staticmethod
+    def normalize_any(text: str, day: Optional[date] = None, log: Logger = LOG) -> datetime:
+        day = day or date.today()
+        try:
+            return SolarTimestamp.from_str(text, day, log).normalize()
+        except ValueError:
+            match = SolarTimestamp.TIME_REGEX.match(text)
+            if match:
+                hour = int(match.group(1))
+                minute = int(match.group(2))
+                return datetime.combine(day, time(hour=hour, minute=minute), tzinfo=SolarTimes.CITY.tzinfo)
+            else:
+                raise ValueError(f"Failed to normalize string {repr(text)}")
     
     def normalize(self, log: Logger = LOG) -> datetime:
         st_today = SolarTimes.from_cache(self.day, log)

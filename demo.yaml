@@ -1,0 +1,30 @@
+dirigera:
+  hub_ip: 192.168.86.27
+  token_file: dirigera_token
+location:
+  name: San Francisco
+  region: America
+  timezone: America/Los_Angeles
+  lat: 37.7614418
+  lon: -122.3940788
+zones:
+  - name: "Living room"
+    routine: "Demo"
+    devices: []
+    device_sets:
+      - "Ceiling Lamp"
+routines:
+  - name: "Demo"
+    data:
+      "dawn":
+        temp: 2202
+        intensity: 0
+      "dusk":
+        temp: 2202
+        intensity: 0
+      "18:00":
+        temp: 2202
+        intensity: 0
+      "midnight":
+        temp: 2202
+        intensity: 0

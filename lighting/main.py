@@ -143,7 +143,7 @@ def windows(ctx):
 
         for day in set([time.date() for time in times]):
             for state in routine.data:
-                time = SolarTimestamp.from_str(state, day, LOG).normalize()
+                time = SolarTimestamp.normalize_any(state, day, LOG)
                 ax.axvline(time, color='k', linestyle='--', alpha=0.3)
 
         ax.set_xlim(start, stop)

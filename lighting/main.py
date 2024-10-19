@@ -1,6 +1,6 @@
 import logging
 from logging import Logger
-from typing import Optional, List
+from typing import Optional, List, Tuple
 from pathlib import Path
 from datetime import date, timedelta, datetime
 from concurrent.futures import ThreadPoolExecutor
@@ -256,9 +256,49 @@ def run(ctx):
         lights = hub.get_lights()
 
         apply_lighting(ctx.obj['config'], datetime.now(tz=SolarTimes.CITY.tzinfo), hub, lights)
+        LOG.info("Applied lighting")
 
         del hub
         time.sleep(60)
+
+@main.command()
+@click.pass_context
+def lights(ctx):
+    hub = ctx.obj['config'].dirigera.get_hub()
+    ungrouped_lights: list[Light] = []
+    lights_by_set: dict[str, list[Light]] = {}
+    warn_about: list[Tuple[Light, list[str]]] = []
+
+    for light in hub.get_lights():
+        light: Light = light
+        device_sets = light.device_set
+        device_set_names = [ds["name"] for ds in device_sets]
+
+        if len(device_sets) == 0:
+            ungrouped_lights.append(light)
+            continue
+
+        if len(device_sets) > 1:
+            warn_about.append((light, device_set_names))
+        
+        for ds_name in device_set_names:
+            if ds_name not in lights_by_set:
+                lights_by_set[ds_name] = []
+            lights_by_set[ds_name].append(light)
+    
+    print("Ungrouped Lights:")
+    for light in ungrouped_lights:
+        print(f"- {repr(light.attributes.custom_name)}")
+    
+    for set_name, lights in lights_by_set.items():
+        print(f"\n\nLights in device set {repr(set_name)}:")
+        for light in lights:
+            print(f"- {repr(light.attributes.custom_name)}")
+    
+    if len(warn_about) > 0:
+        print("\n\nWARNING: The following lights are in multiple device sets. This is nonstandard and may cause bugs:")
+        for (light, sets) in warn_about:
+            print(f"- {repr(light.attributes.custom_name)} is in sets {', '.join(map(repr, sets))}")
 
 def apply_lighting(config: Config, time: datetime, hub: Optional[Hub] = None, lights: Optional[List[Light]] = None):
     if hub is None:

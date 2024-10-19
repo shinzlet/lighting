@@ -25,5 +25,5 @@ calibrate = "lighting.calibrate:main"
 requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools.packages.find]
-include = ["daxi", "Camera"]
+[tool.setuptools.packages]
+find = {include = ["lighting"], exclude = ["screenshots"]}

@@ -53,7 +53,7 @@ class InterpolationWindow:
         hue = interpolate_hue(start_data.hue, end_data.hue, rise)
 
         return RoutineData(
-            temp=int(temp),
+            temp=min(4000, max(2202, int(temp))),
             intensity=int(intensity),
             saturation=saturation,
             hue=hue
